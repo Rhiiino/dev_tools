@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Server action template to be used with devtools.-->
+        <record id="dev_tools_server_action_template" model="ir.actions.server">
+            <field name="name">Dev Tools Server Action Template</field>
+            <field name="model_id" ref="base.model_ir_actions_server"/>
+            <field name="state">code</field>
+            <field name="code">raise UserError("Bananas")</field>
+        </record>
+
+    </data>
+</odoo>

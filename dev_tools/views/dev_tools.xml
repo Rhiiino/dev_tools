@@ -8,6 +8,17 @@
             <field name='res_model'>dev.tools</field>
         </record>
 
+        <!-- Dev Tools List view -->
+        <record id="dev_tools_list_view" model="ir.ui.view">
+            <field name='name'>dev.tools.list.view</field>
+            <field name='model'>dev.tools</field>
+            <field name='arch' type='xml'>
+                <tree string='Dev Tools'>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
 
         <!-- Dev Tools Form view -->
         <record id="dev_tools_form_view" model="ir.ui.view">
@@ -26,15 +37,16 @@
                         <group>
                             <group name="tool_toggles" string="Tool Toggles">
                                 <field name="module_tray_active" widget="boolean_toggle"/>
+                                 <field name="input_shell_active" widget="boolean_toggle"/>
                             </group>
                             <group>
                                 <!-- PLACEHOLDER-->
                             </group>
                         </group>
 
-                        <!-- Notebook consisting on pages dedicated to individual tools. -->
+                        <!-- Notebook consisting on pages dedicated to individual tools and their respective configuration parameters. -->
                         <notebook>
-                            <!-- Tool 1 specs (Module tray) -->
+                            <!-- Tool 1 specs (Module Tray) -->
                             <page name='Module Tray' attrs="{'invisible': [('module_tray_active', '=', False)]}">
                                 <group>
                                     <field name='quick_upgradable_module_ids' widget="many2many_tags"/>  
@@ -42,20 +54,23 @@
                                     <field name="enable_humor" attrs="{'invisible': [('upgrade_success_alert_style', 'not in', ('persistent_sticky', 'temporary_sticky'))]}" widget="boolean_toggle"/>
                                 </group>
                             </page>
+
+                            <!-- Tool 2 specs (Input Shell) -->
+                            <page name='Input Shell' attrs="{'invisible': [('input_shell_active', '=', False)]}">
+                                <group>
+                                    <group name="shell_hotkeys" string="Shell Hotkeys">
+                                        <field name='shell_toggle_hotkey'/>  
+                                        <field name='shell_submit_hotkey'/>  
+                                        <field name='shell_mode_cycle_hotkey'/>  
+                                    </group>
+                                    <group>
+                                        <field name='name'/>  
+                                    </group>
+                                </group>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
-            </field>
-        </record>
-
-        <!-- Dev Tools List view -->
-        <record id="dev_tools_list_view" model="ir.ui.view">
-            <field name='name'>dev.tools.list.view</field>
-            <field name='model'>dev.tools</field>
-            <field name='arch' type='xml'>
-                <tree string='Dev Tools'>
-                    <field name="name"/>
-                </tree>
             </field>
         </record>
 

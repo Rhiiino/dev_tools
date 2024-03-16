@@ -16,7 +16,7 @@ export class ModuleTrayManager {
         /* Called in class constructor to set class variables, to be later used for ModuleTray component. */
         var response = await this.orm.call('dev.tools', 'initialize_module_tray_variables', [[]], {});
         this.modules = response.modules
-        this.tool_configs = response.tool_configs     
+        this.tool_configs = response.tool_configs
     }
 
     async upgradeModule(module_id){
