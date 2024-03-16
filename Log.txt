@@ -11,3 +11,5 @@
 
 -May have to refactor how the module alert status indicator (the one that pulses in the system tray) functions. Depdending on what is refactored, may have to rename the upgrade_success_alert_style field.
  as currently, it is used mostly only used to alert the user of a successfull upgrade. 
+
+-TODO: For inputshell, may likely need to create a new model for defining shell modes (i.e. shell.mode or something).
