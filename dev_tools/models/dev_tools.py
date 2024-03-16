@@ -67,7 +67,6 @@ class DevTools(models.Model):
             'modules': self.env['ir.module.module'].search([('show_in_devtools', '=', True)]).mapped(lambda x: {'id':x.id, 'name':x.shortdesc, 'state':x.state}),
             'tool_configs': self.env.ref('dev_tools.main_dev_tool').mapped(lambda tool: {
                 'upgrade_success_alert_style': tool.upgrade_success_alert_style,
-                'enable_humor': tool.upgrade_success_alert_style,
                 'module_tray_active': tool.module_tray_active
                 }
             )[0]
