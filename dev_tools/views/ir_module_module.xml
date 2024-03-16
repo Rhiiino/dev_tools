@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="module_form_inherit" model="ir.ui.view">
+        <field name="name">module.form.inherit</field>
+        <field name="model">ir.module.module</field>
+        <field name='inherit_id' ref='base.module_form'/>
+        <field name="arch" type="xml">
+            <!-- Insert show_in_devtools bool into modules form view. -->
+            <xpath expr="//field[@name='website']" position="before">
+                <field name='show_in_devtools' widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="module_tree_inherit" model="ir.ui.view">
+        <field name="name">module.tree.inherit</field>
+        <field name="model">ir.module.module</field>
+        <field name='inherit_id' ref='base.module_tree'/>
+        <field name="arch" type="xml">
+            <!-- Insert show_in_devtools bool into modules tree view. -->
+            <xpath expr="//field[@name='shortdesc']" position="after">
+                <field name='show_in_devtools' widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Insert dev toggle into modules kanban view-->
+    <record id="dev_tools_tools_view" model="ir.ui.view">
+        <field name='model'>ir.module.module</field>
+        <field name='inherit_id' ref='base.module_view_kanban'/>
+        <field name='arch' type='xml'>
+            <xpath expr='//h4' position='after'>
+                <p>Show in Dev Tools: <field name="show_in_devtools" widget="boolean_toggle"/></p>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Dev Tools Window action -->
+        <record id="dev_tools.action_dev_tools_settings_menu" model="ir.actions.act_window">
+            <field name='view_mode'>list,form</field>
+            <field name='res_model'>dev.tools</field>
+        </record>
+
+
+        <!-- Dev Tools Form view -->
+        <record id="dev_tools_form_view" model="ir.ui.view">
+            <field name='name'>dev.tools.form.view</field>
+            <field name='model'>dev.tools</field>
+            <field name='arch' type='xml'>
+                <form string='Dev Tools'>
+                    <sheet>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        
+                        <group>
+                            <group name="tool_toggles" string="Tool Toggles">
+                                <field name="module_tray_active" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <!-- PLACEHOLDER-->
+                            </group>
+                        </group>
+
+                        <!-- Notebook consisting on pages dedicated to individual tools. -->
+                        <notebook>
+                            <!-- Tool 1 specs (Module tray) -->
+                            <page name='Module Tray' attrs="{'invisible': [('module_tray_active', '=', False)]}">
+                                <group>
+                                    <field name='quick_upgradable_module_ids' widget="many2many_tags"/>  
+                                    <field name="upgrade_success_alert_style"/>
+                                    <field name="enable_humor" attrs="{'invisible': [('upgrade_success_alert_style', 'not in', ('persistent_sticky', 'temporary_sticky'))]}" widget="boolean_toggle"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Dev Tools List view -->
+        <record id="dev_tools_list_view" model="ir.ui.view">
+            <field name='name'>dev.tools.list.view</field>
+            <field name='model'>dev.tools</field>
+            <field name='arch' type='xml'>
+                <tree string='Dev Tools'>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Dev Tools menu Item -->
+        <menuitem id='dev_tools.settings_menu' name='Dev Tools' parent="resource.menu_resource_config" groups='base.group_user' action='dev_tools.action_dev_tools_settings_menu'/>
+
+    </data>
+</odoo>

@@ -1,0 +1,149 @@
+
+.tool_status{
+    margin-right: 8px;
+    margin-bottom: 1px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #f6f618;
+    display: none;
+}
+
+@keyframes pulse_yellow {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(131, 150, 24, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(177, 224, 6, 0.7);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(177, 224, 6, 0.7);
+	}
+}
+
+@keyframes pulse_green {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(21, 128, 21, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(9, 180, 9, 0.7);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.3);
+	}
+}
+
+
+.tool-item-shell{
+    height: 15px;
+    margin: 5px;
+    // background-color: aqua;
+}
+
+.tool-item-shell:hover{
+    color: black;
+    font-weight: bold;
+}
+
+
+.module_state{
+    margin-right: 5px;
+    margin-bottom: -3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+}
+
+.module-installed{
+    background-color: #00ff01;
+}
+.module-uninstalled{
+    background-color: rgb(202, 81, 81);
+}
+
+
+
+
+
+.dropdown_component{
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
+    border: none;
+    color: #eeeeee;
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: -3px 5px;
+    padding-top: 1px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.success-pulse{
+    animation: success-pulse-animation 1500ms infinite;
+}
+@keyframes success-pulse-animation {
+    0% {
+    //   background-color: #2ba805;
+      box-shadow: 0 0 3px #2ba805;
+    }
+    50% {
+    //   background-color: #49e819;
+      box-shadow: 0 0 10px #49e819;
+    }
+    100% {
+    //   background-color: #2ba805;
+      box-shadow: 0 0 3px #2ba805;
+    }
+}
+
+
+.progress-pulse{
+    animation: progress-pulse-animation 1500ms infinite;
+}
+@keyframes progress-pulse-animation {
+    0% {
+      box-shadow: 0 0 3px #ffbd00;
+    }
+    50% {
+      box-shadow: 0 0 10px #ffbd00;
+    }
+    100% {
+      box-shadow: 0 0 3px #ffbd00;
+    }
+}
+
+.error-pulse{
+    animation: error-pulse-animation 1500ms infinite;
+}
+@keyframes error-pulse-animation {
+    0% {
+      box-shadow: 0 0 3px #ff2200;
+    }
+    50% {
+      box-shadow: 0 0 10px #ff2200;
+    }
+    100% {
+      box-shadow: 0 0 3px #ff2200;
+    }
+}
+
+
+
+
+
+
+

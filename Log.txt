@@ -1,0 +1,11 @@
+# Log (This file will details logs, events, issues or todos that you encounter that you want to record to reference or remind you of later on.)
+
+
+-TODO: Open Dev Tools menu to form record of sole dev.tool record.
+
+-TODO: Cannot get quick_upgradable_module_ids (dev.tool m2m) to update when show_in_devtools (ir.module.module bool) is toggled off.
+
+-TODO: Couldn't call button_uninstall_wizard method from js. Calling custom .py method as an alternative.
+
+-May have to refactor how the module alert status indicator (the one that pulses in the system tray) functions. Depdending on what is refactored, may have to rename the upgrade_success_alert_style field.
+ as currently, it is used mostly only used to alert the user of a successfull upgrade. 

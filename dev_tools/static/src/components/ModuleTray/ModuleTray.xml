@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Parent dropdown component -->
+    <t t-name="dev_tools.ModuleTray" owl="1" t-if="state.ModuleTrayService.tool_configs.module_tray_active">
+        <Dropdown class="'d-none d-md-block dropdown_component'" position="'bottom-end'">
+            <t t-set-slot="toggler">
+                <div class='tool_status' t-on-click="(ev) => {ev.target.style.display = 'none'}"/>
+                <span class="oe_topbar_name d-none d-lg-block">DevTools</span>
+            </t>
+
+            <t t-foreach="state.ModuleTrayService.modules" t-as="tool" t-key="tool.id">
+                <t t-call="dev_tools.ToolTrayItem">
+                    <t t-set="tool" t-value="tool" />
+                </t>
+            </t>
+        </Dropdown>
+    </t>
+
+
+    <!-- Child dropdown item component -->
+    <t t-name="dev_tools.ToolTrayItem" owl="1">
+        <DropdownItem class="'p-0 bg-white'">
+            <div
+                role="button"
+                class="d-flex flex-grow-1 align-items-center py-0 log_into ps-2 tool-item-shell">
+            
+                <span class='company_label pe-3'>   
+                    <div class='module_state' t-attf-class="module-{{tool.state}}" t-on-click="(ev) => this.updateState(ev, tool)"/>
+                    <span t-esc="tool.name" t-on-click="(ev) => this.upgradeModule(ev, tool)"/>
+                </span>
+
+            </div>
+        </DropdownItem>
+    </t>
+
+</templates>
