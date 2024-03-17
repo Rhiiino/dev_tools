@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="dev_tools.glass_sticky" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1" t-if="state.GlassStickyService.tool_configs.glass_sticky_active">
+        
+        <!-- Insert Glass Sticky tool structure into webclient. -->
+        <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
+
+            <div class='stickies_container'>
+
+                <!-- Represents a single sticky-->
+                <div class='sticky_shell'>
+                    <div class='sticky_header'>
+                        <div class='sticky_status_icon' t-on-click="(ev) => this.saveSticky(ev)"/> <span class='sticky_status_text'></span>
+                    </div>
+                    <textarea class='sticky_note'></textarea>
+                </div>   
+
+            </div>
+
+        </xpath>
+    </t>
+
+</templates>

@@ -4,12 +4,6 @@ import { WebClient } from "@web/webclient/webclient"
 import { useService } from "@web/core/utils/hooks";
 import { useState, onRendered, onMounted, loadFile } from "@odoo/owl";
 
-// Testing
-import { browser } from "@web/core/browser/browser";
-var session = require('web.session');
-import { useHotkey } from "@web/core/hotkeys/hotkey_hook";
-
-
 
 
 
@@ -22,6 +16,9 @@ patch(WebClient.prototype, "WebClientPatch", {
         this.orm = useService("orm");
         this.state = useState({'currentTrayMode': 'ORM', 'InputShellService': useService("InputShellService")})
         this.trayModes = ['ORM', 'SQL', 'SCRIBE']
+
+        // Exit if InputShell tool is disabled
+        if (!this.state.InputShellService.tool_configs.input_shell_active){return}
 
         // Set hotkeys
         this.shellToggleHotkey = this.state.InputShellService.hotkeys.toggle

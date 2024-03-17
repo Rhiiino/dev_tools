@@ -14,6 +14,7 @@ class DevTools(models.Model):
     # Tool toggles
     module_tray_active = fields.Boolean(string='Module Tray', help='Enables a dropdown tray in system tray containing desired modules, allowing quick upgrade functionality.')
     input_shell_active = fields.Boolean(string='Input Shell', help='Embeds a hidden input shell, allowing for the use of various functionality via shell mode cycling.')
+    glass_sticky_active = fields.Boolean(string='Glass Stickies', help='Allows use of configurable, on-screen sticky notes.')
 
     # Module Tray fields
     quick_upgradable_module_ids = fields.Many2many('ir.module.module', string='Modules', help='Specfies modules which can be accessible through the module tray.')
@@ -31,6 +32,10 @@ class DevTools(models.Model):
     shell_toggle_hotkey = fields.Char(string='Shell Toggle Hotkey')
     shell_submit_hotkey = fields.Char(string='Shell Submit Hotkey')
     shell_mode_cycle_hotkey = fields.Char(string='Mode Cycle Hotkey')
+
+    # Glass Sticky fields
+    sticky_toggle_hotkey = fields.Char(string='Sticky Toggle Hotkey')
+    sticky_input = fields.Text(string='Saved Input')
 
 
 
@@ -93,9 +98,12 @@ class DevTools(models.Model):
     # Input Shell methods
     def initialize_input_shell_variables(self):
         """xxx"""
+        main_tool = self.env.ref('dev_tools.main_dev_tool')
         x = {
-            'hotkeys': self.env.ref('dev_tools.main_dev_tool').mapped(lambda tool: {'toggle': tool.shell_toggle_hotkey, 'submit': tool.shell_submit_hotkey, 'mode_cycle': tool.shell_mode_cycle_hotkey})[0],
-            'tool_configs': 'lol'
+            'hotkeys': {'toggle': main_tool.shell_toggle_hotkey, 'submit': main_tool.shell_submit_hotkey, 'mode_cycle': main_tool.shell_mode_cycle_hotkey},
+            'tool_configs': {
+                'input_shell_active': main_tool.input_shell_active
+            }
         }
         return x
 
@@ -121,3 +129,23 @@ class DevTools(models.Model):
 
 
 
+    # Glass sticky methods
+    def initialize_glass_sticky_variables(self):
+        """xxx"""
+        main_tool = self.env.ref('dev_tools.main_dev_tool')
+        x = {
+            'hotkeys': {'toggle': main_tool.sticky_toggle_hotkey},
+            'tool_configs': {
+                'glass_sticky_active': main_tool.glass_sticky_active
+            }
+        }
+        return x
+
+    def save_sticky_input(self, **kwargs):
+        """xxx"""
+        main_tool = self.env.ref('dev_tools.main_dev_tool')
+        if main_tool.sticky_input != kwargs.get('input'): main_tool.sticky_input = kwargs.get('input')
+        return {'status': 200}
+
+
+        

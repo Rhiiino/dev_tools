@@ -1,0 +1,57 @@
+// Glass Stickies
+.stickies_container{
+    background-color: rgba(240, 165, 255, 0);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10000;
+    pointer-events: none; // Enables click through to elements underneath
+}
+
+
+.sticky_shell{
+    background-color: rgba(81, 255, 10, 0);
+    width: 500px;
+    height: 500px;
+    resize: both;
+    overflow: auto;
+    overflow-y: hidden; // Used for hiding ugly scrollbar
+    pointer-events: auto; 
+    display: none;
+}
+
+.sticky_header{
+    width: 100%;
+    background-color: rgba(0, 247, 255, 0.3);
+    height: 25px;
+    padding: 1px;
+}
+
+.sticky_status_icon{
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #00ff4c;
+    display: inline-block;
+}
+
+.sticky_status_text{
+    margin-left: 2px;
+    display: inline-block;
+}
+
+.sticky_note{
+    background-color: rgba(0, 247, 255, 0.1);
+    border-color: rgba(0, 247, 255, 0.5);
+    pointer-events: inherit;
+    width: 100%;
+    height: 100%;
+    font: 30px Impact;
+    display: block;
+    border: none;
+    resize: none;
+}
+
+

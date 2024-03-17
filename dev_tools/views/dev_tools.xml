@@ -37,7 +37,8 @@
                         <group>
                             <group name="tool_toggles" string="Tool Toggles">
                                 <field name="module_tray_active" widget="boolean_toggle"/>
-                                 <field name="input_shell_active" widget="boolean_toggle"/>
+                                <field name="input_shell_active" widget="boolean_toggle"/>
+                                <field name="glass_sticky_active" widget="boolean_toggle"/>
                             </group>
                             <group>
                                 <!-- PLACEHOLDER-->
@@ -58,7 +59,7 @@
                             <!-- Tool 2 specs (Input Shell) -->
                             <page name='Input Shell' attrs="{'invisible': [('input_shell_active', '=', False)]}">
                                 <group>
-                                    <group name="shell_hotkeys" string="Shell Hotkeys">
+                                    <group name="shell_hotkeys" string="Hotkeys">
                                         <field name='shell_toggle_hotkey'/>  
                                         <field name='shell_submit_hotkey'/>  
                                         <field name='shell_mode_cycle_hotkey'/>  
@@ -68,6 +69,19 @@
                                     </group>
                                 </group>
                             </page>
+
+                            <!-- Tool 3 specs (Glass Sticky) -->
+                            <page name='Glass Sticky' attrs="{'invisible': [('glass_sticky_active', '=', False)]}">
+                                <group>
+                                    <group name="sticky_hotkeys" string="Hotkeys">
+                                        <field name='sticky_toggle_hotkey'/>
+                                    </group>
+                                    <group name="stick_input_group" string="Input">
+                                        <field name='sticky_input'/>
+                                    </group>
+                                </group>
+                            </page>
+
                         </notebook>
                     </sheet>
                 </form>

@@ -13,3 +13,12 @@
  as currently, it is used mostly only used to alert the user of a successfull upgrade. 
 
 -TODO: For inputshell, may likely need to create a new model for defining shell modes (i.e. shell.mode or something).
+
+-TODO: Add more customization options for glass sticky tool (sticky color, transparency range, toggleable passthrough, if I can get it to work).
+
+-TODO: Considering allowing utilization of multiple stickies. If so, may need to create a new model for stickies and link from dev.tool as o2m
+
+-TODO: The t-if condition used in dis/enabling the input tray and glass sticky tools dont seem to be working. I believe this is because I am extended the
+       webclient to add those tools with a patched webclient for both tools. Somehow, as a result, the condition check fails. I suspect it is because the 
+       variables/properties (which I defined in the patches) used in the condition do not exist when my extended webclient view component is rendered.
+       Will need to find a solution for this.  

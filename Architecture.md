@@ -6,6 +6,8 @@
 ---------- Ideas ----------
 -Draggable/Sticky sticky notes
 -Server action triggered by hotkey (Standalone/seperate from input shell's ORM mode)
+-Transparant sticky overlayed on the webclient/views, allowing you to visualize what you are taking notes on.
+
 
 
 

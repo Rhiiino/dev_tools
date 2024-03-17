@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
-    <t t-name="dev_tools.TrayInput" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
+    <t t-name="dev_tools.TrayInput" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1" t-if="state.InputShellService.tool_configs.input_shell_active">
+        
         <!-- xxx -->
         <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
 
 
-            <!-- Testing scribe mode. -->
+            <!-- Testing scribe mode. *In progress. -->
             <!-- <t t-if="state.currentTrayMode === 'SCRIBE'">
                 <div>
                     <button class='scribe_button_1'>

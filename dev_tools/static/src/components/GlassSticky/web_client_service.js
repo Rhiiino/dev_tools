@@ -2,7 +2,7 @@
 import { registry } from "@web/core/registry";
 
 
-export class InputShellManager {
+export class GlassStickyManager {
     /* xxx */
 
     constructor(env, { orm }) {
@@ -14,24 +14,27 @@ export class InputShellManager {
 
     async initialize(){
         /* xxx */
-        var response = await this.orm.call('dev.tools', 'initialize_input_shell_variables', [[]], {});
+        var response = await this.orm.call('dev.tools', 'initialize_glass_sticky_variables', [[]], {});
         this.hotkeys = response.hotkeys
         this.tool_configs = response.tool_configs
     }
 
+    async saveStickyInput(input){
+        /* xxx */
+        await this.orm.call('dev.tools', 'save_sticky_input', [[]], {'input': input});
+
+    }
 }
-
-
 
 
 
 // Define service object
-export const InputShellCustom = {
+export const GlassStickyCustom = {
     dependencies: [ "orm" ],
     async start(env, { orm }) {
-        return new InputShellManager( env,{ orm })
+        return new GlassStickyManager( env,{ orm })
     },
 }
 
 // Add service to registry
-registry.category("services").add("InputShellService", InputShellCustom);
+registry.category("services").add("GlassStickyService", GlassStickyCustom);

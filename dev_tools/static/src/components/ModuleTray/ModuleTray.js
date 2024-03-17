@@ -17,7 +17,7 @@ export class ModuleTrayComponent extends Component {
         this.orm = useService("orm");
         this.state = useState({'ModuleTrayService': useService("ModuleTrayService")});
         this.notification = useService("notification");
-        this.testFunc(); // Solely for testing purposes
+        // this.testFunc(); // Solely for testing purposes
     };
 
     async upgradeModule(element, module){
