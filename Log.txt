@@ -22,3 +22,5 @@
        webclient to add those tools with a patched webclient for both tools. Somehow, as a result, the condition check fails. I suspect it is because the 
        variables/properties (which I defined in the patches) used in the condition do not exist when my extended webclient view component is rendered.
        Will need to find a solution for this.  
+
+-In addition to having hotkeys for tools, you can have icons in the system tray that trigger various tools

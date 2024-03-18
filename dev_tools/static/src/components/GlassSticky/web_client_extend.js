@@ -62,9 +62,12 @@ patch(WebClient.prototype, "WebClientPatchGlassSticky", {
     
     async saveSticky(ev){
         /* xxxxx */
-        console.log('Saving Sticky...')
+        $('.sticky_status_icon').css({'animation': 'pulse_yellow 2s infinite'});
+        $('.sticky_status_text').css({'display': 'inline-block'});
         var sticky = $('.sticky_note')
         if (sticky.val()){this.state.GlassStickyService.saveStickyInput(sticky.val())}  
+        $('.sticky_status_icon').css({'animation': 'pulse_green 2s 5'});
+        $('.sticky_status_text').css({'display': 'none'});
     },
  
 

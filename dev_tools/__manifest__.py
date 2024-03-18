@@ -3,7 +3,7 @@
     'name': "Dev Tools",
     'summary': """A toolkit designed to streamline development for odoo developers.""",
     'description': """Dev Tools Module.""",
-    'author': "Midhun Raj",
+    'author': "Midhun Raj, @git: Rhiiino",
     'category': 'None',
     'version': '0.1',
     "images": ["static/description/icon.png"],

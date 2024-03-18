@@ -11,7 +11,7 @@
                 <!-- Represents a single sticky-->
                 <div class='sticky_shell'>
                     <div class='sticky_header'>
-                        <div class='sticky_status_icon' t-on-click="(ev) => this.saveSticky(ev)"/> <span class='sticky_status_text'></span>
+                        <div class='sticky_status_icon' t-on-click="(ev) => this.saveSticky(ev)"/> <span class='sticky_status_text'>Saving...</span>
                     </div>
                     <textarea class='sticky_note'></textarea>
                 </div>   
