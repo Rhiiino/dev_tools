@@ -39,6 +39,7 @@
                                 <field name="module_tray_active" widget="boolean_toggle"/>
                                 <field name="input_shell_active" widget="boolean_toggle"/>
                                 <field name="glass_sticky_active" widget="boolean_toggle"/>
+                                <field name="tech_peek_active" widget="boolean_toggle"/>
                             </group>
                             <group>
                                 <!-- PLACEHOLDER-->
@@ -78,6 +79,19 @@
                                     </group>
                                     <group name="stick_input_group" string="Input">
                                         <field name='sticky_input'/>
+                                    </group>
+                                </group>
+                            </page>
+
+                             <!-- Tool 4 specs (Tech Peek) -->
+                            <page name='Tech Peek' attrs="{'invisible': [('tech_peek_active', '=', False)]}">
+                                <group>
+                                    <group name="tech_peek_hotkeys" string="Hotkeys">
+                                        <field name='tech_peek_toggle_hotkey'/>
+                                        <field name='label_color' widget='color'/>
+                                    </group>
+                                    <group>
+                                        <!-- PLACEHOLDER-->
                                     </group>
                                 </group>
                             </page>

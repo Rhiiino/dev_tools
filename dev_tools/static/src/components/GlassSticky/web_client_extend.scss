@@ -37,6 +37,11 @@
     display: inline-block;
 }
 
+.sticky_status_icon_green{
+    background-color: rgb(157, 255, 10);
+    animation: pulse_green 2s infinite;
+}
+
 .sticky_status_text{
     margin-left: 2px;
     display: none;

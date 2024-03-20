@@ -24,3 +24,7 @@
        Will need to find a solution for this.  
 
 -In addition to having hotkeys for tools, you can have icons in the system tray that trigger various tools
+
+-TODO: Sticky status icon (visual indicator) only animates on first click. While any following clicks save the input, the animation fails to trigger.
+
+-NOTE: the ~ registers are the ` key in the keyup event in js. Definitely odd behavior, so you do not want to use that key with that event.

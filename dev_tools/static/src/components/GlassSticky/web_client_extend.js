@@ -21,11 +21,12 @@ patch(WebClient.prototype, "WebClientPatchGlassSticky", {
 
         // Set hotkeys
         this.stickyToggleHotkey = this.state.GlassStickyService.hotkeys.toggle
-        this.testHotkey = '~'
-
+        this.testHotkey = ''
 
         onMounted(() => {
 
+
+        
             // General key listener for toggling input shell (This is placed on the DOM itself)
             document.addEventListener('keydown', (ev) => {
 
@@ -35,14 +36,18 @@ patch(WebClient.prototype, "WebClientPatchGlassSticky", {
                 }
 
                 // TESTING toggleable sticky passthrough
-                if (ev.key == '!') {
-                    // this.testFunc4(ev)
+                if (ev.key == this.testHotkey) {
+                    this.testFunc5(ev)
+
+
                 }
             });
 
             // Manage key events for tray input (These are placed on the tray itself)
             var trayInput = document.querySelector('.tray-input')
             trayInput.onkeydown = (ev) => {}
+
+
 
         })
     },
@@ -66,8 +71,18 @@ patch(WebClient.prototype, "WebClientPatchGlassSticky", {
         $('.sticky_status_text').css({'display': 'inline-block'});
         var sticky = $('.sticky_note')
         if (sticky.val()){this.state.GlassStickyService.saveStickyInput(sticky.val())}  
-        $('.sticky_status_icon').css({'animation': 'pulse_green 2s 5'});
         $('.sticky_status_text').css({'display': 'none'});
+        $('.sticky_status_icon').addClass('sticky_status_icon_green');
+
+        // Remove class after x seconds
+        setInterval(this.remove_class, 5000)
+        
+    },
+
+    async remove_class(){
+        var sticky_status_icon = $('.sticky_status_icon')
+        sticky_status_icon.removeClass('sticky_status_icon_green');
+        sticky_status_icon.css({'animation': 'none'});
     },
  
 
@@ -82,8 +97,16 @@ patch(WebClient.prototype, "WebClientPatchGlassSticky", {
 
         var newPointerEvent = sticky.getAttribute('pointer-events') === 'none' ? 'auto' : 'none'
         sticky.setAttribute('pointer-events', newPointerEvent)
-
-
     },
+
+    async testFunc5(ev){
+        /* xxx */
+        console.log('testFunc5: ')
+        // var x = document.querySelector('[for="partner_id"]');
+        var x = document.querySelectorAll('label');
+        for (var elem of x)console.log(elem)
+        x.textContent = 'REPLACED'
+
+    }
 
 })

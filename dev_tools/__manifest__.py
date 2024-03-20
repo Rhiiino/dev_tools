@@ -27,6 +27,7 @@
             'dev_tools/static/src/components/ModuleTray/*',        # Module tray tool
             'dev_tools/static/src/components/InputShell/*',        # Input shell tool
             'dev_tools/static/src/components/GlassSticky/*',       # Glass Sticky tool
+            'dev_tools/static/src/components/TechPeek/*',          # Glass Sticky tool
         ]
     },
 

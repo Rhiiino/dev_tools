@@ -34,7 +34,7 @@ patch(WebClient.prototype, "WebClientPatch", {
 
                 // For testing
                 if (ev.key == this.testHotkey) {
-                    this.testFunc2()
+                    // this.testFunc2()
                 }
 
                 if (ev.key == this.shellToggleHotkey) {
@@ -58,6 +58,7 @@ patch(WebClient.prototype, "WebClientPatch", {
 
                 // For mode cycle (sequentially cycles through modes)
                 else if (ev.key === this.modeCycleHotkey){
+                    console.log('T2')
                     ev.preventDefault()
                     // if (ev.currentTarget.value.length == 0){
                     // Checks if current mode which user is switching from is last in mode list, if so sets tray mode to first mode in list

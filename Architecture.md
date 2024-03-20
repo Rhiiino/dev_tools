@@ -3,6 +3,9 @@
 
 # Tool Stuf
 
+------ Refs ------
+https://github.com/odoo/owl/blob/master/doc/readme.md
+
 ---------- Ideas ----------
 -Draggable/Sticky sticky notes
 -Server action triggered by hotkey (Standalone/seperate from input shell's ORM mode)
@@ -21,3 +24,4 @@
 
 ---------- Input Shell ----------
 -Possibly alow a mode where you can jot down and store quick notes.
+

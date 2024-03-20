@@ -15,6 +15,7 @@ class DevTools(models.Model):
     module_tray_active = fields.Boolean(string='Module Tray', help='Enables a dropdown tray in system tray containing desired modules, allowing quick upgrade functionality.')
     input_shell_active = fields.Boolean(string='Input Shell', help='Embeds a hidden input shell, allowing for the use of various functionality via shell mode cycling.')
     glass_sticky_active = fields.Boolean(string='Glass Stickies', help='Allows use of configurable, on-screen sticky notes.')
+    tech_peek_active = fields.Boolean(string='Tech Peek', help='Allows visuals to technical specs on every field on a given view.')
 
     # Module Tray fields
     quick_upgradable_module_ids = fields.Many2many('ir.module.module', string='Modules', help='Specfies modules which can be accessible through the module tray.')
@@ -36,6 +37,10 @@ class DevTools(models.Model):
     # Glass Sticky fields
     sticky_toggle_hotkey = fields.Char(string='Sticky Toggle Hotkey')
     sticky_input = fields.Text(string='Saved Input')
+
+    # Tech peek fields
+    tech_peek_toggle_hotkey = fields.Char(string='Tech Peek Hotkey')
+    label_color = fields.Char()
 
 
 
@@ -146,6 +151,17 @@ class DevTools(models.Model):
         main_tool = self.env.ref('dev_tools.main_dev_tool')
         if main_tool.sticky_input != kwargs.get('input'): main_tool.sticky_input = kwargs.get('input')
         return {'status': 200}
+    
+
+
+    # Tech peek methods
+    def initialize_tech_peek_variables(self):
+        """xxx"""
+        main_tool = self.env.ref('dev_tools.main_dev_tool')
+        return {'hotkeys': {'toggle': main_tool.tech_peek_toggle_hotkey},
+                'label_color': main_tool.label_color,
+                'tool_configs': {'tech_peek_active': main_tool.tech_peek_active}
+                }
 
 
         
