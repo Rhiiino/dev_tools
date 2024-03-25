@@ -22,7 +22,7 @@ class IrModuleModule(models.Model):
         res = super().create(vals)
 
         # Set show_in_dev_tools bool on quick_upgradable_modules modules
-        if res.show_in_dev_tool:
+        if res.show_in_devtools:
             self.env.ref('dev_tools.main_dev_tool').quick_upgradable_module_ids += res
 
         return res
@@ -39,4 +39,3 @@ class IrModuleModule(models.Model):
                 self.env.ref('dev_tools.main_dev_tool').quick_upgradable_module_ids -= self
 
         return res
-

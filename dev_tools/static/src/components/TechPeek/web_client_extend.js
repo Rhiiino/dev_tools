@@ -21,7 +21,7 @@ patch(WebClient.prototype, "WebClientPatchTechPeek", {
             // Note: Decided not to use a service for this tool since all I needed to query for was only a few values. May still create a servic in the future
             var response = await this.orm.call('dev.tools', 'initialize_tech_peek_variables', [[]], {})
 
-            if (!response.tool_configs.tech_peek_active){return} // Simply exits is inactive
+            if (!response.tool_configs.tech_peek_active){return} // Simply exits if inactive
 
             this.keyTrigger = response.hotkeys.toggle 
             this.labelColor = response.label_color
@@ -77,9 +77,6 @@ patch(WebClient.prototype, "WebClientPatchTechPeek", {
                 }
             })
 
-
-
         })
     },
-
 })

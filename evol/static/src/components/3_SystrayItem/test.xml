@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="evol.TestComp" owl="1">
+
+        <Dropdown class="'d-none d-md-block dropdown_component'" position="'bottom-end'">
+            <t t-set-slot="toggler">
+                Look ma ! 
+            </t>
+        </Dropdown>
+        
+    </t>
+
+</templates>

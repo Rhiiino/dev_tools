@@ -39,7 +39,7 @@
                                 <field name="module_tray_active" widget="boolean_toggle"/>
                                 <field name="input_shell_active" widget="boolean_toggle"/>
                                 <field name="glass_sticky_active" widget="boolean_toggle"/>
-                                <field name="tech_peek_active" widget="boolean_toggle"/>
+                                <field name="tech_peek_active"  widget="boolean_toggle"/>
                             </group>
                             <group>
                                 <!-- PLACEHOLDER-->
@@ -48,6 +48,7 @@
 
                         <!-- Notebook consisting on pages dedicated to individual tools and their respective configuration parameters. -->
                         <notebook>
+                        
                             <!-- Tool 1 specs (Module Tray) -->
                             <page name='Module Tray' attrs="{'invisible': [('module_tray_active', '=', False)]}">
                                 <group>

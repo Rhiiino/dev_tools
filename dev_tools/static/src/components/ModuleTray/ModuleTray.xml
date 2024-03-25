@@ -2,8 +2,8 @@
 <templates xml:space="preserve">
 
     <!-- Parent dropdown component -->
-    <t t-name="dev_tools.ModuleTray" owl="1" t-if="state.ModuleTrayService.tool_configs.module_tray_active">
-        <Dropdown class="'d-none d-md-block dropdown_component'" position="'bottom-end'">
+    <t t-name="dev_tools.ModuleTray" owl="1">
+        <Dropdown class="'d-none d-md-block dropdown_component'" position="'bottom-end'" t-if="state.ModuleTrayService.tool_configs.module_tray_active">
             <t t-set-slot="toggler">
                 <div class='tool_status' t-on-click="(ev) => {ev.target.style.display = 'none'}"/>
                 <span class="oe_topbar_name d-none d-lg-block">DevTools</span>

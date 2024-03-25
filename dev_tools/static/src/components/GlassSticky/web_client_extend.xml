@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
-    <t t-name="dev_tools.glass_sticky" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1" t-if="state.GlassStickyService.tool_configs.glass_sticky_active">
+    <t t-name="dev_tools.glass_sticky" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
         
         <!-- Insert Glass Sticky tool structure into webclient. -->
-        <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
+        <xpath expr="//t[@t-if='!state.fullscreen']" position="after" t-if="state.GlassStickyService.tool_configs.glass_sticky_active">
 
             <div class='stickies_container'>
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Dev Tools Form view -->
+        <record id="dev_tools_form_view_extend" model="ir.ui.view">
+            <field name='name'>dev.tools.form.view.extend</field>
+            <field name='model'>dev.tools</field>
+            <field name='inherit_id' ref='dev_tools.dev_tools_form_view'/>
+
+            <field name='arch' type='xml'>
+                <xpath expr='//notebook' position='inside'>
+                    <!-- Tool 0 specs (Evol) *This page will solely be for testing/experimentation.-->
+                    <page name="Evol">
+                        <group>
+                            <field name="test_bool"/>
+                            <field name="test_bool" widget="late_boolean_widget"/>
+                            <field name="test_char"/>
+                            <field name="test_char" widget="my_text_field_widget"/>
+                            <field name="test_text"/>
+                            <field name="test_text" widget="my_text_field_widget"/>
+                            <field name="test_integer"/>
+                        </group>
+                        <group>
+                            <!-- PLACEHOLDER -->
+                        </group>
+                    </page>
+
+                </xpath>
+            </field>
+
+        </record>
+
+    </data>
+</odoo>

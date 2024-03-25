@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="evol.glass_sticky" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
+        
+        <!-- Insert xxx structure into webclient. -->
+        <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
+
+            <div class='stat_container'>
+                <span class='statSpan' id='technical_name'></span>
+                <span class='statSpan' id='field_type'></span>
+                <span class='statSpan' id='model_name'></span>
+            </div>
+
+        </xpath>
+    </t>
+
+</templates>

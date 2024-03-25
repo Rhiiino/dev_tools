@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data> 
+        <!-- Sole Dev tool record used for management of various custom tools. -->
+        <record id="main_dev_tool" model='dev.tools'>
+            <field name='name'>Main Tool</field>
+        </record>
+    </data>
+
+</odoo>

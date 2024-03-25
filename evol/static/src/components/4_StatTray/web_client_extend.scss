@@ -1,0 +1,33 @@
+
+.stat_container{
+    height: 40px; 
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+    z-index: 10;
+    background-color: rgba(255, 199, 95, 0.2);
+    font-weight: bold;
+    font-family: 'Impact', sans-serif;
+    font-size: 20px;
+    display: flex;
+}
+ 
+.statSpan{
+    height: 40px;
+    width: 300px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#technical_name{
+    background-color: rgba(124, 252, 92, 0.2);
+}
+
+#field_type{
+    background-color: rgba(255, 129, 98, 0.2);
+}
+
+#model_name{
+    background-color: rgba(220, 92, 252, 0.2);
+
+}
