@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="evol.glass_sticky" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
+        
+        <!-- Insert StatTray into webclient. -->
+        <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
+
+            <div class='stat_container' t-if="state.HoverBarService.toolConfigs.hover_bar_active">
+                <t t-set='module_configs' t-value='state.HoverBarService.moduleConfigs'/>
+                <t t-set='module_styles' t-value='state.HoverBarService.moduleStyles'/>
+                <span class='statSpan' id='technical_name' t-if='module_configs.tech_name' t-att-style="`background-color: ${module_styles.tech_name + '50'};`"/>
+                <span class='statSpan' id='field_type' t-if='this.debugIsOn and module_configs.field_type' t-att-style="`background-color: ${module_styles.field_type + '50'};`"/>
+                <span class='statSpan' id='model_name' t-if='this.debugIsOn and module_configs.rel_model' t-att-style="`background-color: ${module_styles.rel_model + '50'};`"/>
+            </div>
+
+        </xpath>
+    </t>
+
+</templates>
+

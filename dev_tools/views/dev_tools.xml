@@ -40,6 +40,7 @@
                                 <field name="input_shell_active" widget="boolean_toggle"/>
                                 <field name="glass_sticky_active" widget="boolean_toggle"/>
                                 <field name="tech_peek_active"  widget="boolean_toggle"/>
+                                <field name="hover_bar_active"  widget="boolean_toggle"/>
                             </group>
                             <group>
                                 <!-- PLACEHOLDER-->
@@ -90,6 +91,28 @@
                                     <group name="tech_peek_hotkeys" string="Hotkeys">
                                         <field name='tech_peek_toggle_hotkey'/>
                                         <field name='label_color' widget='color'/>
+                                    </group>
+                                    <group>
+                                        <!-- PLACEHOLDER-->
+                                    </group>
+                                </group>
+                            </page>
+
+                            <!-- Tool 5 specs (Hover bar) -->
+                            <page name='Hover Bar' attrs="{'invisible': [('hover_bar_active', '=', False)]}">
+                                <group>
+                                    <group name="hover_bar_group_1" string="Bar Modules">
+                                        <group name='xxx' string=''>
+                                            <field name="enable_technical_name_module"  widget="boolean_toggle"/>
+                                            <field name="enable_field_type_module"  widget="boolean_toggle"/>
+                                            <field name="enable_relational_model_module"  widget="boolean_toggle"/>
+                                        </group>
+                                        <group name='xxxx' string=''>
+                                            <field name='technical_name_module_color' widget='color' attrs="{'invisible': [('enable_technical_name_module', '=', False)]}"/>
+                                            <field name='field_type_module_color' widget='color' attrs="{'invisible': [('enable_field_type_module', '=', False)]}"/>
+                                            <field name='relational_model_module_color' widget='color' attrs="{'invisible': [('enable_relational_model_module', '=', False)]}"/>
+                                        </group>
+                                        
                                     </group>
                                     <group>
                                         <!-- PLACEHOLDER-->

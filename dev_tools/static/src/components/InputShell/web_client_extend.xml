@@ -4,7 +4,7 @@
     <t t-name="dev_tools.TrayInput" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
         
         <!-- xxx -->
-        <xpath expr="//t[@t-if='!state.fullscreen']" position="after" t-if="state.InputShellService.tool_configs.input_shell_active">
+        <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
 
 
             <!-- Testing scribe mode. *In progress. -->

@@ -1,0 +1,89 @@
+/** @odoo-module **/
+import { patch } from "@web/core/utils/patch"
+import { WebClient } from "@web/webclient/webclient"
+import { useService } from "@web/core/utils/hooks";
+import { onMounted, useState} from "@odoo/owl";
+
+
+patch(WebClient.prototype, "WebClientHoverBarPatch", {
+    async setup(){
+        /* xxx */
+        this._super.apply(this, arguments); 
+
+        this.orm = useService("orm");
+        this.state = useState({'HoverBarService': useService("HoverBarService")})
+
+        // Exit if HoverBar tool is disabled
+        if (!this.state.HoverBarService.toolConfigs.hover_bar_active){return}
+
+        this.debugIsOn = false  // Initialize bool representing whether debug mode is on/off
+        this.setDebugIsOn()    // Set debugIsOn variable
+
+        onMounted(() => {
+            // Mouse event listener
+            document.addEventListener("mouseover", async (event) => {
+
+                // Get element stats
+                var elementStats = await this.getElementStats(event)
+                // console.log(elementStats)
+
+                // Apply to DOM
+                if (elementStats){
+                    Object.keys(elementStats).forEach(key => {
+                        var elemId = '#' + key
+                        $(elemId).text(elementStats[key])
+                    })
+                }
+            })
+        })
+    },
+
+    // ------------------ Custom Methods ------------------
+    async getElementStats(ev){
+        /* Checks if the element the event was triggered is appropriate */
+
+        // Initialize vars
+        var elem = ev.target
+        var stats = {}
+
+        // Reset fields
+        stats['technical_name'] = ''
+        stats['field_type'] = ''
+        stats['model_name'] = ''
+
+        // If regular field element
+        if (elem.tagName === 'LABEL' && elem.getAttribute('for')){
+            stats['technical_name'] = elem.getAttribute('for')
+
+            // If label has sup element, extract stats from it
+            if (this.debugIsOn && elem.querySelector('sup')){
+                var toolTip = JSON.parse(elem.querySelector('sup').getAttribute('data-tooltip-info'))
+                stats['field_type'] = toolTip.hasOwnProperty('field') && toolTip.field.hasOwnProperty('type') ? toolTip.field.type : ''
+                stats['model_name'] = toolTip.hasOwnProperty('field') && toolTip.field.hasOwnProperty('relation') ? toolTip.field.relation : ''
+            }
+        }
+        
+        // If from notebook header
+        else if (elem.tagName === 'SPAN' && elem.parentNode.parentNode.tagName === 'TH'){
+            var thElem = elem.parentNode.parentNode
+            stats['technical_name'] = thElem.getAttribute('data-name')
+
+            // If element has tooltop element, extract stats from it
+            if (this.debugIsOn && thElem.getAttribute('data-tooltip-info')){
+                var toolTip = JSON.parse(thElem.getAttribute('data-tooltip-info'))
+                stats['field_type'] = toolTip.hasOwnProperty('field') && toolTip.field.hasOwnProperty('type') ? toolTip.field.type : ''
+                stats['model_name'] = toolTip.hasOwnProperty('field') && toolTip.field.hasOwnProperty('relation') ? toolTip.field.relation : ''
+            }
+        }
+
+        return stats
+
+    },
+
+    async setDebugIsOn(){
+        /* xxx */
+        var urlArgs = new URLSearchParams(window.location.search)  
+        if (urlArgs.get('debug') && urlArgs.get('debug') == 1){this.debugIsOn = true}
+    },
+
+})

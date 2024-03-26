@@ -24,17 +24,22 @@ export class ModuleTrayComponent extends Component {
         /* Callback for upgrading a desired module. Also alerts user after a successfull upgrade based on user preference. 
             Failed upgrades are notifed via conventional method, aka pink-screen */
 
-        $('.tool_status').css({'background-color': '#f6f618', 'display': 'inline-block', 'animation': 'pulse_yellow 2s infinite'});
-        await this.state.ModuleTrayService.upgradeModule(module.id)
+        var toolConfigs = this.state.ModuleTrayService.tool_configs
+        var subtleAlert = toolConfigs.upgrade_success_alert_style === 'systray_icon'
+        console.log(subtleAlert)
 
-        var tool_configs = this.state.ModuleTrayService.tool_configs
-        if (['temporary_sticky', 'persistent_sticky'].includes(tool_configs.upgrade_success_alert_style)){
-            var message = 'Hello There'
-            var sticky_style = tool_configs.upgrade_success_alert_style === 'persistent_sticky' ? true : false 
-            this.notification.add(`${message}`, {title: `"${module.name}" upgraded successfully`, type: "success", sticky: sticky_style,});
-        } else if (tool_configs.upgrade_success_alert_style === 'systray_icon'){
-            $('.tool_status').css({'background-color': '#00ff01', 'display': 'inline-block', 'animation': 'pulse_green 2s infinite'});
-        }
+        if (subtleAlert) $('.tool_status').css({'background-color': '#f6f618', 'display': 'inline-block', 'animation': 'pulse_yellow 2s infinite'});
+
+        var preTime = performance.now()
+        await this.state.ModuleTrayService.upgradeModule(module.id)
+        var elapsedTime = ((performance.now() - preTime)/1000).toFixed(2)
+
+        if (!subtleAlert){
+            var sticky_style = toolConfigs.upgrade_success_alert_style === 'persistent_sticky' ? true : false 
+            this.notification.add(`Upgraded in ${elapsedTime} seconds`, {title: `"${module.name}" upgraded successfully`, type: "success", sticky: sticky_style,});
+        } 
+        else $('.tool_status').css({'background-color': '#00ff01', 'display': 'inline-block', 'animation': 'pulse_green 2s infinite'});
+
     };
 
     async updateState(element, module){

@@ -13,9 +13,10 @@ class DevTools(models.Model):
 
     # Tool toggles
     module_tray_active = fields.Boolean(string='Module Tray', help='Enables a dropdown tray in system tray containing desired modules, allowing quick upgrade functionality.')
-    input_shell_active = fields.Boolean(string='Input Shell', help='Embeds a hidden input shell, allowing for the use of various functionality via shell mode cycling.')
+    input_shell_active = fields.Boolean(string='Input Shell', help='Embeds a hidden input shell, allowing for the use of various input modes via shell mode cycling.')
     glass_sticky_active = fields.Boolean(string='Glass Stickies', help='Allows use of configurable, on-screen sticky notes.')
     tech_peek_active = fields.Boolean(string='Tech Peek', help='Allows visuals to technical specs on every field on a given view.')
+    hover_bar_active = fields.Boolean(string='Hover Bar', help='Enables a configurable dock for displaying desired field properties driven my mouse positioning.')
 
     # Module Tray fields
     quick_upgradable_module_ids = fields.Many2many('ir.module.module', string='Modules', help='Specfies modules which can be accessible through the module tray.')
@@ -42,6 +43,15 @@ class DevTools(models.Model):
     tech_peek_toggle_hotkey = fields.Char(string='Tech Peek Hotkey')
     label_color = fields.Char()
 
+    # Hover bar methods
+    enable_technical_name_module = fields.Boolean(string='Technical Name', help='xxx')
+    enable_field_type_module = fields.Boolean(string='Field Type', help='xxx')
+    enable_relational_model_module = fields.Boolean(string='Relational Model', help='xxx')
+    technical_name_module_color = fields.Char(string="TechName Color", help='Specifies color for the technical name module in hover bar.')
+    field_type_module_color = fields.Char(string="FieldType Color", help='Specifies color for the field type module in hover bar.')
+    relational_model_module_color = fields.Char(string="RelModel Color", help='Specifies color for the relation model module in hover bar.')
+
+
 
 
 
@@ -49,7 +59,6 @@ class DevTools(models.Model):
     @api.model_create_multi
     def create(self, vals):
         """Extension of the base create method."""
-
         res = super().create(vals)
         # Set show_in_dev_tools bool on quick_upgradable_modules modules
         for rec in res.quick_upgradable_module_ids:
@@ -58,10 +67,9 @@ class DevTools(models.Model):
 
     def write(self, vals):
         """Extension of the base write method."""
-
         pre_quick_upgradable_module_ids = self.quick_upgradable_module_ids
         res = super().write(vals)
-
+ 
         # Set boolean on modules in quick_upgradable_module_ids that have not been yet set for
         for mod in self.quick_upgradable_module_ids:
             if not mod.show_in_devtools:
@@ -163,5 +171,20 @@ class DevTools(models.Model):
                 'tool_configs': {'tech_peek_active': main_tool.tech_peek_active}
                 }
 
+    
 
-        
+    # Hover Bar methods
+    def initialize_hover_bar_variables(self):
+        """xxx"""
+        main_tool = self.env.ref('dev_tools.main_dev_tool')
+        return {'xxxx': main_tool.label_color,
+                'tool_configs': {'hover_bar_active': main_tool.hover_bar_active},
+                'module_configs': {'tech_name': main_tool.enable_technical_name_module, 
+                                   'field_type': main_tool.enable_field_type_module, 
+                                   'rel_model': main_tool.enable_relational_model_module},
+                'module_styles': {
+                    'tech_name': main_tool.technical_name_module_color, 
+                    'field_type': main_tool.field_type_module_color, 
+                    'rel_model': main_tool.relational_model_module_color, 
+                    }
+                }
