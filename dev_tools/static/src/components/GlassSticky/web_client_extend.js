@@ -70,6 +70,7 @@ patch(WebClient.prototype, "WebClientPatchGlassSticky", {
         $('.sticky_status_icon').css({'animation': 'pulse_yellow 2s infinite'});
         $('.sticky_status_text').css({'display': 'inline-block'});
         var sticky = $('.sticky_note')
+        console.log(sticky.val(), this.state.GlassStickyService)
         if (sticky.val()){this.state.GlassStickyService.saveStickyInput(sticky.val())}  
         $('.sticky_status_text').css({'display': 'none'});
         $('.sticky_status_icon').addClass('sticky_status_icon_green');

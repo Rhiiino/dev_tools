@@ -1,0 +1,11 @@
+
+.cute_cat{
+    position: absolute;
+    bottom: 10px; 
+    left: 10px; 
+    background-color: rgba(231, 126, 126, 0);
+    pointer-events: none;
+    z-index: 1000;
+    max-height: 80px; // Tweak this value if you dont want to make it so obvious lol
+    
+}

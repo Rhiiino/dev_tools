@@ -22,10 +22,8 @@ export class GlassStickyManager {
     async saveStickyInput(input){
         /* xxx */
         await this.orm.call('dev.tools', 'save_sticky_input', [[]], {'input': input});
-
     }
 }
-
 
 
 // Define service object

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="cactus_mode.cacti" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1"> 
+        <xpath expr="//t[@t-if='!state.fullscreen']" position="after">
+            <!-- <img class="cacti" src="/cactus_mode/static/img/cactus.svg"/> -->
+            <div class="counter">Cacti Destroyed: <span id="destroyedCounter">0</span></div>
+
+        </xpath>
+    </t>
+
+</templates>
